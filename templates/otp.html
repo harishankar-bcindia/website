@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTP Verification</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #0d2344; /* Cyan background */
+        color: #333; /* Dark gray text color */
+    }
+    .container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    .error-message {
+        color: red;
+        margin-top: 5px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>OTP Verification</h1>
+    <form id="otp-form">
+        <input type="text" id="otp" name="otp" placeholder="Enter your 6 digit OTP sent to your email id" pattern="\d{6}" required>
+        <input type="submit" value="Submit">
+    </form>
+    <div id="error-message" class="error-message" style="display: none;"></div>
+</div>
+
+<script>
+    document.getElementById("otp-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var otp = document.getElementById("otp").value;
+        // Pass the OTP to the function_1 for verification
+        var isValid = function_1(otp);
+        if (isValid) {
+            // OTP is valid, you can redirect or perform other actions
+            console.log("OTP is valid");
+            window.location.href = "/home/profile";
+        } else {
+            // OTP is invalid, display error message
+            var errorMessage = document.getElementById("error-message");
+            errorMessage.innerText = "Invalid OTP. Please try again.";
+            errorMessage.style.display = "block";
+        }
+    });
+
+    // Dummy function for OTP verification
+    function function_1(otp) {
+        // Replace this with your OTP verification logic
+        // For demonstration purposes, let's assume a fixed OTP
+        var validOTP = "123456";
+        return otp === validOTP;
+    }
+</script>
+
+</body>
+</html>

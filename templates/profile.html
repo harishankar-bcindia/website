@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #0d2344; /* Cyan background */
+        color: #333; /* Dark gray text color */
+    }
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        color: #007bff; /* Blue heading color */
+    }
+    p {
+        margin-bottom: 10px;
+    }
+    .footer {
+        margin-top: 20px;
+        text-align: center;
+        color: #777;
+    }
+    .section {
+        margin-bottom: 20px;
+    }
+    .section-title {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+    .code {
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    #uuid {
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    #copy-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #copy-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>User Profile</h1>
+    <div id="uuid">UUID: 123e4567-e89b-12d3-a456-426614174000</div>
+    <button id="copy-btn">Copy UUID</button>
+
+    <div class="section">
+        <h2 class="section-title">User Information</h2>
+        <p><strong>Full Name:</strong> John Doe</p>
+        <p><strong>Email:</strong> john.doe@example.com</p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Documentation</h2>
+        <p>This page displays user information retrieved from the backend.</p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Sample Code</h2>
+        <pre class="code"><code>
+import requests
+
+url = 'https://api.example.com/user/profile'
+headers = {'Authorization': 'Bearer YOUR_ACCESS_TOKEN'}
+response = requests.get(url, headers=headers)
+
+if response.status_code == 200:
+    user_data = response.json()
+    print(user_data)
+else:
+    print('Error:', response.status_code)
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Developer</h2>
+        <p>Developed by: Your Name</p>
+    </div>
+
+    <div class="footer">
+        <p>Footer content or advertisement here</p>
+    </div>
+</div>
+
+<script>
+    // Function to copy UUID to clipboard
+    document.getElementById("copy-btn").addEventListener("click", function() {
+        var uuidElement = document.getElementById("uuid");
+        var range = document.createRange();
+        range.selectNode(uuidElement);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+        alert("UUID copied to clipboard!");
+    });
+</script>
+
+</body>
+</html>
